@@ -6,6 +6,7 @@ import chars.Player;
 import clocks.Asteroid_Creation;
 import clocks.Bullet_Creation;
 import clocks.Star_Movement;
+import data.Upgrade;
 import game.Gamestate;
 import game.Gamestate_e;
 import gui.Button;
@@ -70,20 +71,20 @@ public class Draw_Main {
         }
 
 
-        if(Gamestate.state == Gamestate_e.shop){
-            g.setFill(new Color(0,0,0,.5));
-            g.fillRect(0,0,Gui.width, Gui.height);
+        if (Gamestate.state == Gamestate_e.shop) {
+            g.setFill(new Color(0, 0, 0, .5));
+            g.fillRect(0, 0, Gui.width, Gui.height);
 
             g.setStroke(Color.WHITE);
-            g.strokeLine(Gui.width/2, 0, Gui.width/2, Gui.height);
+            g.strokeLine(Gui.width / 2, 0, Gui.width / 2, Gui.height);
 
             g.setFill(Color.WHITE);
             g.setFont(Font.font("Veranda", 20));
 
 
-            for(Button_angled b : Gui.buttons_angled){
-                if(b.isHover()){
-                    g.setFill(new Color(1,1,1,.2));
+            for (Button_angled b : Gui.buttons_angled) {
+                if (b.isHover()) {
+                    g.setFill(new Color(1, 1, 1, .2));
                     double[] xpoints = {b.getX1(), b.getX2(), b.getX5(), b.getX1()};
                     double[] ypoints = {b.getY1(), b.getY1(), b.getY2(), b.getY2()};
 
@@ -113,26 +114,36 @@ public class Draw_Main {
                 g.strokeLine(b.getX4(), b.getY1(), b.getX4(), b.getY2());
                 g.strokeLine(b.getX3(), b.getY1(), b.getX6(), b.getY2());
 
-                g.drawImage(IL.iiridium, b.getX3(), b.getY1() +IL.iiridium.getHeight() / 4 + 3, 22, 22);
+                g.drawImage(IL.iiridium, b.getX3(), b.getY1() + IL.iiridium.getHeight() / 4 + 3, 22, 22);
 
             }
 
-            g.setStroke(Color.WHITE);
-            g.setFill(new Color(39. / 255.,174. / 255.,96. / 255., 1));
+            g.setFont(Font.font("Veranda", 25));
+            for (int i = 0; i < Gui.buttons_angled.length; i++) {
+                g.fillText(df.format(Upgrade.cost[i]), Gui.buttons_angled[i].getX3() + 30, Gui.buttons_angled[i].getY1() + 33);
+            }
 
-            for(int i = 0; i< Gui.rectangles.length; i++){
-                for(int j = 0; j< Gui.rectangles[i].length; j++){
+            g.setStroke(Color.WHITE);
+            g.setFill(new Color(39. / 255., 174. / 255., 96. / 255., 1));
+
+            for (int i = 0; i < Gui.rectangles.length; i++) {
+                for (int j = 0; j < Gui.rectangles[i].length; j++) {
 
                     g.strokeRect(Gui.rectangles[i][j].getX(), Gui.rectangles[i][j].getY(), Gui.rectangles[i][j]
                             .getWidth(), Gui.rectangles[i][j].getHeight());
 
+
                 }
             }
+            for (int i = 0; i < Gui.rectangles.length; i++) {
+                for (int j = 0; j < Upgrade.ugCount[i]; j++) {
+                    g.fillRect(Gui.rectangles[i][j].getX() + 0.5, Gui.rectangles[i][j].getY() + 0.5, Gui.rectangles[i][j]
+                            .getWidth() - 1, Gui.rectangles[i][j].getHeight() - 1);
 
 
-
+                }
+            }
         }
-
 
         g.setStroke(Color.WHITE);
         g.strokeLine(0, 50, 300, 50);
@@ -141,14 +152,14 @@ public class Draw_Main {
         g.strokeLine(Gui.width - 300, 50, Gui.width, 50);
         g.strokeLine(Gui.width - 325, 0, Gui.width - 300, 50);
 
-        g.drawImage(IL.iiridium, 15,15,20,20);
+        g.drawImage(IL.iiridium, 15, 15, 20, 20);
 
         g.setFill(Color.WHITE);
         g.setFont(Font.font("Veranda", 25));
         g.fillText(df.format(Player.iridium), 50, 34);
 
-        g.drawImage(IL.ihealth, Gui.width -290, 12, 25, 25);
-        g.fillText(df.format(Player.health), Gui.width-250, 34);
+        g.drawImage(IL.ihealth, Gui.width - 290, 12, 25, 25);
+        g.fillText(df.format(Player.health), Gui.width - 250, 34);
 
 
         if (Gamestate.state == Gamestate_e.pause) {

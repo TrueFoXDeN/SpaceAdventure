@@ -21,7 +21,7 @@ public class Bullet_Creation {
             public void run() {
                 if(Gamestate.state == Gamestate_e.ingame){
                     if(Player.isShooting){
-                        bullets.add(new Bullet(Player.x + Player.width/2-8, Player.y - 40, 15 , 50, 20));
+                        bullets.add(new Bullet(Player.x + Player.width/2-8, Player.y - 40, 15 , 50));
                     }
                 }
             }

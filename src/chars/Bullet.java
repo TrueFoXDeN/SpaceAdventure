@@ -1,14 +1,14 @@
 package chars;
 
 public class Bullet {
-    private int x, y, width, height, speed;
+    private int x, y, width, height;
 
-    public Bullet(int x, int y, int width, int height, int speed) {
+    public Bullet(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.speed = speed;
+
     }
 
     public int getX() {
@@ -43,11 +43,4 @@ public class Bullet {
         this.height = height;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
 }

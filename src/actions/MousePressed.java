@@ -1,6 +1,7 @@
 package actions;
 
 import chars.Player;
+import data.Upgrade;
 import game.Gamestate;
 import game.Gamestate_e;
 import gui.Gui;
@@ -28,7 +29,12 @@ public class MousePressed implements EventHandler<MouseEvent> {
                 }
                 break;
             case shop:
-             break;
+                for (int i = 0; i < Gui.buttons_angled.length; i++) {
+                    if (Collision.cButton_angled(Gui.buttons_angled[i], (int) e.getX(), (int) e.getY())) {
+                       Upgrade.upgrade(i);
+                    }
+                }
+                break;
         }
 
     }

@@ -16,7 +16,7 @@ public class Asteroid_Collision {
                         Asteroid_Creation.asteroids.get(i).setHit(true);
                         Bullet_Creation.bullets.remove(j);
                         Asteroid_Creation.asteroids.get(i).setCurrenthealth(Asteroid_Creation.asteroids.get(i)
-                                .getCurrenthealth() - 25);
+                                .getCurrenthealth() - Player.damage);
 
                         if (Asteroid_Creation.asteroids.get(i).getCurrenthealth() <= 0) {
                             if (Asteroid_Creation.asteroids.get(i).containsIridium()) {

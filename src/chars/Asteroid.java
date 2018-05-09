@@ -33,7 +33,7 @@ public class Asteroid {
         y = -height;
 
         if(containsIridium){
-            value = (width * height) / 400;
+            value = (width * height) / Player.iridiumCollect;
         }
 
     }
